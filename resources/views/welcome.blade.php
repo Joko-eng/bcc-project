@@ -64,10 +64,10 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative bg-green-2000 text-white flex items-center" style="min-height: 100vh;">
+    <section class="relative bg-green-2000 text-white flex items-center" style="min-height: 110vh;">
         <div class="absolute inset-0 overflow-hidden">
             <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-100">
-                <source src="/video/videoprofil-bcc.mp4" type="video/mp4">
+                <source src="/video/Profile BCC.mp4" type="video/mp4">
                 <!-- Tambahkan lebih banyak source video jika diperlukan untuk mendukung berbagai format video -->
                 Browser kamu tidak mendukung video.
             </video>
@@ -80,7 +80,7 @@
             <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6">Explore Banyuwangi's Charm with Our Exclusive, Handcrafted Souvenirs Reflecting the Region's Unique Culture and Craftsmanship.</h1>
         </div>
         
-    </section>
+        </section>
    
     <div class="container mx-auto px-6 py-12">
         <!-- Our Categories -->

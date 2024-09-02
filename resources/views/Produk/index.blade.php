@@ -57,24 +57,26 @@
                                 <tr>
                                     <th scope="col" class="px-4 py-3">Nama</th>
                                     <th scope="col" class="px-4 py-3">Deskripsi</th>
-                                    <th scope="col" class="px-4 py-3">Kategori</th>
-                                    <th scope="col" class="px-4 py-3">Gambar</th>
                                     <th scope="col" class="px-4 py-3">Bahan</th>
+                                    <th scope="col" class="px-4 py-3">Gambar</th>
+                                    <th scope="col" class="px-4 py-3">Kategori</th>
                                     <th scope="col" class="px-4 py-3">
                                         <span class="sr-only">Actions</span>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                            
+                            @foreach ($produks as $produk )
+
+                           
                                 <tr class="border-b dark:border-gray-700">
-                                    <td class="px-4 py-3">nama</td>
-                                    <td class="px-4 py-3">Deskripsi untuk item 1</td>
-                                    <td class="px-4 py-3">Kategori 1</td>
+                                    <td class="px-4 py-3">{{$produk->nama}}</td>
+                                    <td class="px-4 py-3">{{$produk->deskripsi}}</td>
+                                    <td class="px-4 py-3">{{$produk->bahan}}</td>
                                     <td class="px-4 py-3">
                                         <img src="path_to_image_1.jpg" alt="Gambar Item 1" class="w-10 h-10">
                                     </td>
-                                    <td class="px-4 py-3">Bahan untuk item 1</td>
+                                    <td class="px-4 py-3">{{$produk->kategoris->nama_kategori}}</td>
                                     <td class="px-4 py-3 flex items-center justify-end">
                                         <button id="dropdown-button-1" data-dropdown-toggle="dropdown-1" class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
                                             <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -96,7 +98,8 @@
                             </tbody>
                         </table>
                     </div>
-
+ 
+                    @endforeach
                     <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
                         <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
                             Showing

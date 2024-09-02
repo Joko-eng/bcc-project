@@ -12,7 +12,8 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        $produks = Produk::with('kategoris');
+    
+        $produks = Produk::all();
         return view('Produk.index', compact('produks'));
     }
 
@@ -22,7 +23,6 @@ class ProdukController extends Controller
     public function create()
     {
         return view('Produk.create');
-        
     }
 
     /**
