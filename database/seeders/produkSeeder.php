@@ -15,25 +15,25 @@ class produkSeeder extends Seeder
     {
         Produk::create([
             'nama' => 'Produk 1',
-                        'bahan' => 'Bahan 1',
-                        'gambar' => 'gambar1.jpg',
-                        'deskripsi' => 'Deskripsi produk 1',
-                        'kategori_id' => 1,
+            'bahan' => 'Bahan 1',
+            'gambar' => 'gambar1.jpg',
+            'deskripsi' => 'Deskripsi produk 1',
+            'kategori_id' => 1,
 
         ]);
 
 
-    //     Produk::table('produks')->insert([
-    //         [
-    //             'nama' => 'Produk 1',
-    //             'bahan' => 'Bahan 1',
-    //             'gambar' => 'gambar1.jpg',
-    //             'deskripsi' => 'Deskripsi produk 1',
-    //             'kategori_id' => 1,
-    //             'created_at' => now(), // Gunakan fungsi now()
-    // 'updated_at' => now(), // Gunakan fungsi now()
-               
-    //         ]
-    //     ]);
+        //     Produk::table('produks')->insert([
+        //         [
+        //             'nama' => 'Produk 1',
+        //             'bahan' => 'Bahan 1',
+        //             'gambar' => 'gambar1.jpg',
+        //             'deskripsi' => 'Deskripsi produk 1',
+        //             'kategori_id' => 1,
+        //             'created_at' => now(), // Gunakan fungsi now()
+        // 'updated_at' => now(), // Gunakan fungsi now()
+
+        //         ]
+        //     ]);
     }
 }
