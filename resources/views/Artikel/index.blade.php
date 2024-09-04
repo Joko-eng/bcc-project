@@ -6,5 +6,7 @@
                             </svg>
                             Tambah artikel
                         </a>
+
+
     </x-layout>
 </x-app-layout>

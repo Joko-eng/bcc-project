@@ -14,8 +14,8 @@ class ProdukController extends Controller
     public function index()
     {
     
-        $produks = Produk::all();
-        return view('Produk.index', compact('produks'));
+        $produks = Produk::with('kategoris')->get();
+    return view('Produk.index', compact('produks'));
     }
 
     /**
@@ -24,7 +24,7 @@ class ProdukController extends Controller
     public function create()
     {
         $kategori = Kategori::all();
-        return view('Produk.create', compact('kategori'));
+        return view('produk.create', compact('kategori'));
     }
 
     /**
@@ -32,7 +32,34 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Debug request data
+       //dd($request->all());
+    
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'bahan' => 'required',
+            'deskripsi' => 'required|min:5|max:150',
+            'kategori_id' => 'required|integer',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+    
+        // Proses penyimpanan produk
+        $produk = new Produk();
+        $produk->nama = $validatedData['nama'];
+        $produk->bahan = $validatedData['bahan'];
+        $produk->deskripsi = $validatedData['deskripsi'];
+        $produk->kategori_id = $validatedData['kategori_id'];
+    
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('upload/produk'), $imageName);
+            $produk->image = $imageName;
+        }
+    
+        $produk->save();
+    
+        return redirect()->route('produk.index')->with('success', 'Produk ' . $validatedData['nama'] . ' Telah Ditambahkan');
     }
 
     /**
