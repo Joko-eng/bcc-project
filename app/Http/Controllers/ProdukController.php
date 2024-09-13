@@ -14,6 +14,7 @@ class ProdukController extends Controller
     public function index()
     {
     
+        $produks = Produk::paginate(6);
         $produks = Produk::with('kategoris')->get();
     return view('Produk.index', compact('produks'));
     }
@@ -73,24 +74,56 @@ class ProdukController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Produk $produk)
+    public function edit(Produk $produk, $id)
     {
-        //
+        $produk = Produk::findOrFail($id);
+        $kategori = Kategori::all(); // Jika Anda perlu mengirim kategori ke view
+        return view('produk.edit', compact('produk', 'kategori'));
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Produk $produk)
+    public function update(Request $request, Produk $produk, $id)
     {
-        //
+      
+      //  dd($request->all());
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'bahan' => 'required',
+            'deskripsi' => 'required|min:5|max:150',
+            'kategori_id' => 'required|integer',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        $produk = Produk::findOrFail($id);
+        $produk->nama = $validatedData['nama'];
+        $produk->bahan = $validatedData['bahan'];
+        $produk->deskripsi = $validatedData['deskripsi'];
+        $produk->kategori_id = $validatedData['kategori_id'];
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('upload/produk'), $imageName);
+            $produk->image = $imageName;
+        }
+
+        $produk->save();
+
+        return redirect()->route('produk.index')->with('success', 'Produk ' . $validatedData['nama'] . ' Telah Diperbarui');
+    
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Produk $produk)
+    public function destroy($id)
     {
-        //
+        $product = Produk::findOrFail($id);
+        $product->delete();
+        return redirect('/produk')->with(['success' => 'Produk Berhasil Dihapus']);
     }
-}
+    }
+
