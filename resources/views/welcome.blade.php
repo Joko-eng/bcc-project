@@ -64,23 +64,22 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative bg-green-2000 text-white flex items-center" style="min-height: 110vh;">
-        <div class="absolute inset-0 overflow-hidden">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-100">
-                <source src="/video/Profile BCC.mp4" type="video/mp4">
-                <!-- Tambahkan lebih banyak source video jika diperlukan untuk mendukung berbagai format video -->
-                Browser kamu tidak mendukung video.
-            </video>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black to-transparent opacity-70">
-            </div>
-        </div>
+    <section class="relative bg-green-200 text-white flex items-center min-h-screen">
+    <div class="absolute inset-0 overflow-hidden">
+        <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-100">
+            <source src="/video/Profile BCC.mp4" type="video/mp4">
+            <!-- Add more video sources if needed to support various video formats -->
+            Your browser does not support the video tag.
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black to-transparent opacity-70"></div>
+    </div>
 
-
-        <div class="relative container mx-auto px-6 py-32 text-center">
-            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6">Explore Banyuwangi's Charm with Our Exclusive, Handcrafted Souvenirs Reflecting the Region's Unique Culture and Craftsmanship.</h1>
-        </div>
-
-    </section>
+    <div class="relative container mx-auto px-6 py-32 text-center">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+            Explore Banyuwangi's Charm with Our Exclusive, Handcrafted Souvenirs Reflecting the Region's Unique Culture and Craftsmanship.
+        </h1>
+    </div>
+</section>
 
 
         <div class="container mx-auto px-6 py-12" id="produk">
@@ -92,29 +91,30 @@
         </div>
     </section>
     <div class="flex overflow-x-auto space-x-4 -mx-2">
-        @foreach ($produks as $produk)
-        <div class="max-w-sm flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    @foreach ($produks as $produk)
+    <div class="max-w-sm flex-shrink-0 w-32 sm:w-48 md:w-50 lg:w-70 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <a href="#">
+            <img class="rounded-t-lg w-full h-48 object-cover" src="{{ asset('upload/produk/' . $produk->image) }}" alt="" />
+        </a>
+        <div class="p-5">
+            <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
+                {{$produk->kategoris->nama_kategori}}
+            </div>
             <a href="#">
-                <img class="rounded-t-lg w-full h-48 object-cover" src="{{ asset('upload/produk/' . $produk->image) }}" alt="" />
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h5>
             </a>
-            <div class="p-5">
-                <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
-                    {{$produk->kategoris->nama_kategori}}
-                </div>
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $produk->bahan }}</p>
+            <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $produk->deskripsi }}</p> -->
+            <div class="px-4 pt-2 pb-4">
+                <a href="/produk/{{ $produk->id }}" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    <i class="fa fa-shopping-cart"></i> Detail Produk
                 </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $produk->bahan }}</p>
-                <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $produk->deskripsi }}</p> -->
-                <div class="px-4 pt-2 pb-4">
-                    <a href="/produk/{{ $produk->id }}" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                        <i class="fa fa-shopping-cart"></i> Detail Produk
-                    </a>
-                </div>
             </div>
         </div>
-        @endforeach
     </div>
+    @endforeach
+</div>
+
 
     <div class="mt-5 text-center">
         <button onclick="scrollRight()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">
