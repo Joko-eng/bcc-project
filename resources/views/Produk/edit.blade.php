@@ -39,7 +39,7 @@
                     <div class="mb-4">
                         <label for="image" class="block text-gray-700">Gambar:</label>
                         <input type="file" id="image" name="image" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                        <img src="{{ asset('upload/produk/' . $produk->image) }}" alt="Produk Image" class="mt-2">
+                        <img src="{{ asset('upload/produk/' . $produk->image1) }}" alt="Produk Image" class="mt-2">
                     </div>
 
                     <div class="flex items-center justify-between">

@@ -15,13 +15,19 @@ class Produk extends Model
         'nama',
         'deskripsi',
         'bahan',
-        'image',
+        'ukuran',
+        'image1',
+        'image2',
+        'image3',
+        'image4',
         'kategori_id'
+
     ];
 
     public function kategoris()
     {
         return $this->belongsTo(Kategori::class, 'kategori_id');
     }
+   
 }
 

@@ -76,7 +76,7 @@
                                 <td class="px-4 py-3">{{$produk->deskripsi}}</td>
                                 <td class="px-4 py-3">{{$produk->bahan}}</td>
                                 <td class="px-4 py-3">
-                                    <img src="{{ asset('upload/produk/' . $produk->image) }}" alt="Product Image"
+                                    <img src="{{ asset('upload/produk/' . $produk->image1) }}" alt="Product Image"
                                         style="max-width: 100px; max-height: 100px;">
                                 </td>
 

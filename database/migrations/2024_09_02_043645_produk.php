@@ -16,7 +16,12 @@ return new class extends Migration
             $table->string('nama');
             $table->string('deskripsi');
             $table->string('bahan');
-            $table->string('image');
+            $table->string('ukuran');
+            $table->string('image1');
+            $table->string('image2');
+            $table->string('image3');
+            $table->string('image4');
+
             $table->unsignedBigInteger('kategori_id');
             $table->foreign('kategori_id')->references('id')->on('kategoris');
             $table->timestamps();

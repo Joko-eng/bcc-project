@@ -10,6 +10,8 @@
     <link rel="icon" href="{{ asset('image/logo.png') }}" type="image/png">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
 </head>
 
 <body class="bg-gray-100">
@@ -65,55 +67,57 @@
 
     <!-- Hero Section -->
     <section class="relative bg-green-200 text-white flex items-center min-h-screen">
-    <div class="absolute inset-0 overflow-hidden">
-        <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-100">
-            <source src="/video/Profile BCC.mp4" type="video/mp4">
-            <!-- Add more video sources if needed to support various video formats -->
-            Your browser does not support the video tag.
-        </video>
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-black to-transparent opacity-70"></div>
-    </div>
+        <div class="absolute inset-0 overflow-hidden">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-100">
+                <source src="/video/Profile BCC.mp4" type="video/mp4">
+                <!-- Add more video sources if needed to support various video formats -->
+                Your browser does not support the video tag.
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black to-transparent opacity-70"></div>
+        </div>
 
-    <div class="relative container mx-auto px-6 py-32 text-center">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6">
-            Explore Banyuwangi's Charm with Our Exclusive, Handcrafted Souvenirs Reflecting the Region's Unique Culture and Craftsmanship.
-        </h1>
-    </div>
-</section>
-
-
-        <div class="container mx-auto px-6 py-12" id="produk">
-    <!-- Our Categories -->
-    <section class="container mx-auto px-6 py-3">
-        <h2 class="text-3xl font-bold mb-2 text-center">Katalog Produk Blimbingsari Creative Craft</h2>
-        <div id="categories">
-            <!-- Kategori cards will be loaded here -->
+        <div class="relative container mx-auto px-6 py-32 text-center">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+                Explore Banyuwangi's Charm with Our Exclusive, Handcrafted Souvenirs Reflecting the Region's Unique Culture and Craftsmanship.
+            </h1>
         </div>
     </section>
-    <div class="flex overflow-x-auto space-x-4 -mx-2">
-    @foreach ($produks as $produk)
-    <div class="max-w-sm flex-shrink-0 w-32 sm:w-48 md:w-50 lg:w-70 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <a href="#">
-            <img class="rounded-t-lg w-full h-48 object-cover" src="{{ asset('upload/produk/' . $produk->image) }}" alt="" />
-        </a>
-        <div class="p-5">
-            <div class="mb-4 rounded-full bg-cyan-600 py-0.5 px-2.5 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-center">
-                {{$produk->kategoris->nama_kategori}}
+    <div class="text-white bg-blue-700 py-2 px-4 rounded">
+        Jumlah Pengunjung: {{ $visitorCount }}
+    </div>
+
+
+    <div class="container mx-auto px-6 py-12" id="produk">
+        <!-- Our Categories -->
+        <section class="container mx-auto px-6 py-3">
+            <h2 class="text-3xl font-bold mb-2 text-center">Katalog Produk Blimbingsari Creative Craft</h2>
+            <div id="categories">
+                <!-- Kategori cards will be loaded here -->
             </div>
-            <a href="#">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $produk->bahan }}</p>
-            <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $produk->deskripsi }}</p> -->
-            <div class="px-4 pt-2 pb-4">
-                <a href="/produk/{{ $produk->id }}" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+        </section>
+        <div class="flex overflow-x-auto space-x-4 -mx-2">
+            @foreach ($produks as $produk)
+            <div class="max-w-sm flex-shrink-0 w-30 sm:w-48 md:w-50 lg:w-70 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <a href="#">
+                    <img class="rounded-t-lg w-full h-48 object-cover" src="{{ asset('upload/produk/' . $produk->image1) }}" alt="" />
+                </a>
+                <div class="p-5">
+                    <div class="mb-4 rounded-full bg-blue-800 py-0.5 px-5 border border-transparent text-xs text-white transition-all shadow-sm w-24 text-start">
+                    {{$produk->kategoris->nama_kategori}}
+                </div>
+                <a href="#">
+                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h2>
+                </a>
+                <br>
+                <a href="/produk/{{ $produk->id }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">
                     <i class="fa fa-shopping-cart"></i> Detail Produk
                 </a>
             </div>
         </div>
+        @endforeach
     </div>
-    @endforeach
-</div>
+
+    </div>
 
 
     <div class="mt-5 text-center">
@@ -131,57 +135,73 @@
             });
         }
     </script>
-  <style>
+    <style>
         #produk .flex {
-            display: flex; /* Use flexbox for the container */
-            gap: 1rem; /* Set a gap between flex items */
+            display: flex;
+            /* Use flexbox for the container */
+            gap: 1rem;
+            /* Set a gap between flex items */
         }
 
         #produk .overflow-x-auto {
-            overflow-x: auto; /* Allow horizontal scrolling */
-            padding-left: 0.5rem; /* Adjust padding for the container */
-            padding-right: 0.5rem; /* Adjust padding for the container */
+            overflow-x: auto;
+            /* Allow horizontal scrolling */
+            padding-left: 0.5rem;
+            /* Adjust padding for the container */
+            padding-right: 0.5rem;
+            /* Adjust padding for the container */
         }
 
         #produk .max-w-sm {
-            width: 300px; /* Set a fixed width */
+            width: 300px;
+            /* Set a fixed width */
         }
 
         #produk .flex-shrink-0 {
-            flex-shrink: 0; /* Prevent flex items from shrinking */
+            flex-shrink: 0;
+            /* Prevent flex items from shrinking */
         }
 
         #produk .rounded-t-lg {
-            border-top-left-radius: 0.5rem; /* Adjust border radius */
-            border-top-right-radius: 0.5rem; /* Adjust border radius */
+            border-top-left-radius: 0.5rem;
+            /* Adjust border radius */
+            border-top-right-radius: 0.5rem;
+            /* Adjust border radius */
         }
 
         #produk .w-full {
-            width: 100%; /* Make the image take full width of the container */
+            width: 100%;
+            /* Make the image take full width of the container */
         }
 
         #produk .h-48 {
-            height: 12rem; /* Set a fixed height for the images */
+            height: 12rem;
+            /* Set a fixed height for the images */
         }
 
         #produk .object-cover {
-            object-fit: cover; /* Ensure the images cover the entire area */
+            object-fit: cover;
+            /* Ensure the images cover the entire area */
         }
 
         #produk .flex-col {
-            display: flex; /* Use flexbox for column layout */
-            flex-direction: column; /* Arrange items in a column */
+            display: flex;
+            /* Use flexbox for column layout */
+            flex-direction: column;
+            /* Arrange items in a column */
         }
 
         #produk .flex-grow {
-            flex-grow: 1; /* Allow the description to take available space */
+            flex-grow: 1;
+            /* Allow the description to take available space */
         }
 
         #produk .mt-auto {
-            margin-top: auto; /* Push the button to the bottom */
+            margin-top: auto;
+            /* Push the button to the bottom */
         }
     </style>
-</div>
+    </div>
 
     </div>
 
@@ -365,6 +385,8 @@
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 </body>
 
 </html>

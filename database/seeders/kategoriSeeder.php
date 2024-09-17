@@ -13,7 +13,7 @@ class kategoriSeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = ['Kalung'];
+        $categories = ['Kalung', 'Dompet', 'Anting-Anting', 'Gelang', 'Home Decor', 'Ikat Pingang'];
 
         foreach ($categories as $category) {
             Kategori::create([
