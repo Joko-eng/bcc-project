@@ -116,7 +116,7 @@
 
             </div>
             <div class="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-3/5">
-                <div class="mb-4 rounded-full bg-blue-800 py-0.5 px-4 border border-transparent text-xs text-white transition-all shadow-sm w-24 text-center">
+                <div class="mb-4 rounded-full bg-blue-800 py-1 px-4 border border-transparent text-xs text-white transition-all shadow-sm w-24 text-center">
                     {{$produk->kategoris->nama_kategori}}
                 </div>
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h5>

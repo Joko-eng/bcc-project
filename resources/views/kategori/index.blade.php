@@ -65,97 +65,106 @@
         </div>
     </nav>
     <section class="bg-gray-50 py-8 antialiased dark:bg-gray-900 md:py-16">
+    <form method="GET" action="{{ route('index') }}" class="mb-6">
+            <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+            <div class="relative">
+                <input type="text" id="search" name="search" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for products...">
+                <button type="submit" class="absolute right-2.5 bottom-1/2 transform translate-y-1/2 bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                    Search
+                </button>
+            </div>
+        </form>
 
-    <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-  <a href="/kategori/kalung" class="flex items-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    <img class="me-2 h-5 w-5 shrink-0" src="images/d.jpg" alt="Kalung" />
-    <span class="text-sm font-medium text-gray-900 dark:text-white">Kalung </span>
-  </a>
-  <a href="/kategori/dompet" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    <img class="me-2 h-5 w-5 shrink-0" src="images/dompet.jpg" alt="Dompet" />
-    <span class="text-sm font-medium text-gray-900 dark:text-white">Dompet </span>
-  </a>
-  <a href="/kategori/anting-anting" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    <img class="me-2 h-5 w-5 shrink-0" src="images/an.jpg" alt="Anting-Anting" />
-    <span class="text-sm font-medium text-gray-900 dark:text-white">Anting-Anting </span>
-  </a>
-  <a href="/kategori/gelang" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    <img class="me-2 h-5 w-5 shrink-0" src="images/gelang.jpg" alt="Gelang" />
-    <span class="text-sm font-medium text-gray-900 dark:text-white">Gelang </span>
-  </a>
-  <a href="/kategori/home-deco" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    <img class="me-2 h-5 w-5 shrink-0" src="images/hd.jpg" alt="Home Decor" />
-    <span class="text-sm font-medium text-gray-900 dark:text-white">Home Decor</span>
-  </a>
-  <a href="/kategori/ikat-pinggang" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    <img class="me-2 h-5 w-5 shrink-0" src="images/ikat.jpg" alt="Ikat Pinggang" />
-    <span class="text-sm font-medium text-gray-900 dark:text-white">Ikat Pinggang </span>
-  </a>
-  <a href="/kategori/bros-ring" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    <img class="me-2 h-5 w-5 shrink-0" src="images/br.jpg" alt="Bros Ring" />
-    <span class="text-sm font-medium text-gray-900 dark:text-white">Bros Ring </span>
-  </a>
-</div>
+        <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <a href="/kategori/kalung" class="flex items-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img class="me-2 h-5 w-5 shrink-0" src="images/d.jpg" alt="Kalung" />
+                <span class="text-sm font-medium text-gray-900 dark:text-white">Kalung </span>
+            </a>
+            <a href="/kategori/dompet" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img class="me-2 h-5 w-5 shrink-0" src="images/dompet.jpg" alt="Dompet" />
+                <span class="text-sm font-medium text-gray-900 dark:text-white">Dompet </span>
+            </a>
+            <a href="/kategori/anting-anting" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img class="me-2 h-5 w-5 shrink-0" src="images/an.jpg" alt="Anting-Anting" />
+                <span class="text-sm font-medium text-gray-900 dark:text-white">Anting-Anting </span>
+            </a>
+            <a href="/kategori/gelang" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img class="me-2 h-5 w-5 shrink-0" src="images/gelang.jpg" alt="Gelang" />
+                <span class="text-sm font-medium text-gray-900 dark:text-white">Gelang </span>
+            </a>
+            <a href="/kategori/home-deco" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img class="me-2 h-5 w-5 shrink-0" src="images/hd.jpg" alt="Home Decor" />
+                <span class="text-sm font-medium text-gray-900 dark:text-white">Home Decor</span>
+            </a>
+            <a href="/kategori/ikat-pinggang" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img class="me-2 h-5 w-5 shrink-0" src="images/ikat.jpg" alt="Ikat Pinggang" />
+                <span class="text-sm font-medium text-gray-900 dark:text-white">Ikat Pinggang </span>
+            </a>
+            <a href="/kategori/bros-ring" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                <img class="me-2 h-5 w-5 shrink-0" src="images/br.jpg" alt="Bros Ring" />
+                <span class="text-sm font-medium text-gray-900 dark:text-white">Bros Ring </span>
+            </a>
+        </div>
 
-</section>
- 
+    </section>
+
 
     <div class="container mx-auto px-4 py-12" id="produk">
-    <!-- Our Categories -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-        @foreach ($produks as $produk)
-        <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <!-- Our Categories -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            @foreach ($produks as $produk)
+            <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <img class="rounded-t-lg w-full h-40 object-cover" src="{{ asset('upload/produk/' . $produk->image1) }}" alt="" />
-            
-            <div class="p-3">
-            <div class="mb-3 inline-block rounded-md bg-blue-800 py-1 px-4 text-xs text-white w-auto">
-                    {{ $produk->kategoris->nama_kategori }}
+
+                <div class="p-3">
+                    <div class="mb-3 inline-block rounded-md bg-blue-800 py-1 px-4 text-xs text-white w-auto">
+                        {{ $produk->kategoris->nama_kategori }}
+                    </div>
+                    <a href="#">
+                        <h2 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h2>
+                    </a>
+                    <a href="/produk/{{ $produk->id }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-3 rounded text-sm">
+                        <i class="fa fa-shopping-cart"></i> Detail Produk
+                    </a>
                 </div>
-                <a href="#">
-                    <h2 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h2>
-                </a>
-                <a href="/produk/{{ $produk->id }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-3 rounded text-sm">
-                    <i class="fa fa-shopping-cart"></i> Detail Produk
-                </a>
             </div>
+            @endforeach
         </div>
-        @endforeach
     </div>
-</div>
 
-<style>
-    #produk .grid {
-        display: grid;
-        /* Create a responsive grid layout */
-        gap: 1rem;
-        /* Set a gap between grid items */
-    }
+    <style>
+        #produk .grid {
+            display: grid;
+            /* Create a responsive grid layout */
+            gap: 1rem;
+            /* Set a gap between grid items */
+        }
 
-    #produk .bg-white {
-        background-color: #ffffff;
-        /* Set background color for the cards */
-    }
+        #produk .bg-white {
+            background-color: #ffffff;
+            /* Set background color for the cards */
+        }
 
-    #produk .text-lg {
-        font-size: 1rem;
-        /* Adjust the font size for the product name */
-    }
+        #produk .text-lg {
+            font-size: 1rem;
+            /* Adjust the font size for the product name */
+        }
 
-    #produk .rounded-t-lg {
-        border-top-left-radius: 0.5rem;
-        border-top-right-radius: 0.5rem;
-    }
+        #produk .rounded-t-lg {
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
 
-    #produk .h-40 {
-        height: 10rem;
-        /* Adjust the height of the images */
-    }
+        #produk .h-40 {
+            height: 10rem;
+            /* Adjust the height of the images */
+        }
 
-    #produk .object-cover {
-        object-fit: cover;
-        /* Ensure the image covers the entire container */
-    }
-</style>
+        #produk .object-cover {
+            object-fit: cover;
+            /* Ensure the image covers the entire container */
+        }
+    </style>
 
     <footer class=" w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
         <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://flowbite.com/" class="hover:underline">Develope By Poliwangi</a>. All Rights Reserved.

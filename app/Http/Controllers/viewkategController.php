@@ -7,9 +7,22 @@ use Illuminate\Http\Request;
 
 class viewkategController extends Controller
 {
-    public function index (){
-        $produks = Produk::with('kategoris')->get();
-        return view ('kategori.index', compact('produks'));
+    public function index (Request $request){
+    
+    
+        $query = Produk::with('kategoris');
+    
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('nama', 'like', "%{$search}%")
+                  ->orWhereHas('kategoris', function($q) use ($search) {
+                      $q->where('nama_kategori', 'like', "%{$search}%");
+                  });
+        }
+    
+        $produks = $query->get();
+    
+        return view('kategori.index', compact('produks'));
     }
     public function kalung()
     {
