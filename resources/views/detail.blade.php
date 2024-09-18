@@ -121,7 +121,8 @@
                 </div>
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h5>
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong> Bahan : </strong>{{ $produk->bahan }}</p>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong> Ukuran : </strong>{{ $produk->deskripsi }}</p>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong> Ukuran : </strong>{{ $produk->ukuran }}</p>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $produk->deskripsi}}</p>
                 <div class="px-4 pt-2 pb-3">
                     <a href="#" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded">
                         <a href="https://wa.me/6282131815153" target="_blank">Chat with us on WhatsApp</a>

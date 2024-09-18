@@ -4,6 +4,8 @@ use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\viewkategController;
+use App\Models\Produk;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,6 +14,18 @@ Route::get('/', function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('welcome');
 Route::get('/produk/{id}', [HomeController::class, 'show']);
+
+//kategori
+Route::get('/kategori', [viewkategController::class, 'index'])->name('index');
+Route::get('/kategori/kalung', [viewkategController::class, 'kalung']);
+Route::get('/kategori/dompet', [viewkategController::class, 'dompet']);
+Route::get('/kategori/anting-anting', [viewkategController::class, 'antingAnting']);
+Route::get('/kategori/gelang', [viewkategController::class, 'gelang']);
+Route::get('/kategori/home-decor', [viewkategController::class, 'homeDecor']);
+Route::get('/kategori/ikat-pinggang', [viewkategController::class, 'ikatPinggang']);
+Route::get('/kategori/bros-ring', [viewkategController::class, 'brosRing']);
+
+
 
 
 Route::get('/dashboard', function () {
@@ -25,6 +39,19 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     //produk
+    Route::get('/produk', function () {
+        $search = request('search');
+        $posts = Produk::latest();
+    
+        if ($search) {
+            $posts->where('nama', 'like', '%' . $search . '%');
+        }
+    
+        $posts = $posts->get();
+    
+        return view('produk', ['posts' => $posts, 'search' => $search]);
+    })->name('produk.index');
+    
     Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
     Route::get('/tambah', [ProdukController::class, 'create'])->name('produk.create');
     Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
