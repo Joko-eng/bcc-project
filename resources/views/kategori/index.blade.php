@@ -65,15 +65,14 @@
         </div>
     </nav>
     <section class="bg-gray-50 py-8 antialiased dark:bg-gray-900 md:py-16">
-    <form method="GET" action="{{ route('index') }}" class="mb-6">
-            <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-            <div class="relative">
-                <input type="text" id="search" name="search" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for products...">
-                <button type="submit" class="absolute right-2.5 bottom-1/2 transform translate-y-1/2 bg-blue-700 hover:bg-blue-800 text-white font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-                    Search
-                </button>
-            </div>
-        </form>
+    <form action="{{ route('index') }}" method="GET" class="mb-4">
+                        <div class="flex items-center">
+                            <input type="text" name="search" placeholder="Search products..." value="{{ request()->query('search') }}" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
+                            <button type="submit" class="ml-2 inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                Search
+                            </button>
+                        </div>
+                    </form>
 
         <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             <a href="/kategori/kalung" class="flex items-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
