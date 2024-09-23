@@ -74,6 +74,11 @@ use Illuminate\Http\Request;
         $kategori = Kategori::all(); // Jika Anda perlu mengirim kategori ke view
         return view('detail', compact('produk', 'kategori'));
     }
+    public function show1(Artikel $artikel, $id)
+    {
+        $artikel = Artikel::findOrFail($id);
+        return view('Artikel.detail', compact('artikel'));
+    }
     
 
     /**

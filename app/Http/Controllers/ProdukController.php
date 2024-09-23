@@ -18,7 +18,7 @@ class ProdukController extends Controller
     public function index(Request $request)
     {
 
-        
+
 
         $search = $request->input('search');
 
@@ -31,8 +31,9 @@ class ProdukController extends Controller
                     });
             })
             ->get();
+            $produkCount = Produk::count();
 
-        return view('Produk.index', compact('produks', ));
+        return view('Produk.index', compact('produks', 'produkCount'));
     }
 
     /**

@@ -21,6 +21,12 @@
         {{-- Title --}}
         <h3 class="text-3xl font-bold dark:text-white px-4 lg:px-12">Produk</h3>
 
+        <a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Total Produk : {{ $produkCount }}</h5>
+
+        </a>
+
         {{-- Table --}}
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg ">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 p-4">

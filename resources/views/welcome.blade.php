@@ -31,9 +31,7 @@
                     <li>
                         <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Beranda</a>
                     </li>
-                    <li>
-                        <a href="#produk" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Produk</a>
-                    </li>
+
                     <li>
                         <a href="/kategori" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Kategori</a>
                     </li>
@@ -82,9 +80,7 @@
             </h1>
         </div>
     </section>
-    <div class="text-white bg-blue-700 py-2 px-4 rounded">
-        Jumlah Pengunjung: {{ $visitorCount }}
-    </div>
+
 
 
     <div class="container mx-auto px-6 py-12" id="produk">
@@ -97,25 +93,25 @@
         </section>
         <div class="flex overflow-x-auto space-x-4 -mx-2">
             @foreach ($produks as $produk)
-            <div class="max-w-sm flex-shrink-0 w-30 sm:w-48 md:w-50 lg:w-70 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="max-w-sm flex-shrink-0 w-30 sm:w-48 md:w-50 lg:w-70 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transition-all transform hover:scale-105 hover:shadow-2xl hover:-translate-y-1 hover:bg-gray-50 duration-300 ease-out">
                 <a href="#">
                     <img class="rounded-t-lg w-full h-48 object-cover" src="{{ asset('upload/produk/' . $produk->image1) }}" alt="" />
                 </a>
                 <div class="p-5">
                     <div class="mb-4 rounded-full bg-blue-800 py-0.5 px-5 border border-transparent text-xs text-white transition-all shadow-sm w-24 text-start">
-                    {{$produk->kategoris->nama_kategori}}
+                        {{$produk->kategoris->nama_kategori}}
+                    </div>
+                    <a href="#">
+                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h2>
+                    </a>
+                    <br>
+                    <a href="/produk/{{ $produk->id }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">
+                        <i class="fa fa-shopping-cart"></i> Detail Produk
+                    </a>
                 </div>
-                <a href="#">
-                    <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h2>
-                </a>
-                <br>
-                <a href="/produk/{{ $produk->id }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">
-                    <i class="fa fa-shopping-cart"></i> Detail Produk
-                </a>
             </div>
+            @endforeach
         </div>
-        @endforeach
-    </div>
 
     </div>
 
@@ -212,42 +208,38 @@
 
     <!-- Berita Start -->
     <div class="container mx-auto px-6 py-2">
-        <!-- Text Tour Start -->
-        <div class="teks mt-[18px]" id="services">
-            <div class="bungkus flex justify-between items-center mt-3">
-                <div class="kiri">
-                    <h1 class="text-gray-800 text-4xl font-semibold">Berita dan Artikel</h1>
-                </div>
-                <div class="kanan">
-                    <button type="button" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">Lihat Semua</button>
+
+        <section class="py-24 bg-gray-100">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-gray-900 text-center mb-10">Berita dan Artikel</h2>
+                <div class="container col-xxl-10 py-2 flex flex-wrap justify-center gap-6">
+                    <!-- Card 1 -->
+                    @foreach ($artikels as $artikel)
+                    <div
+                        class="flex flex-col max-w-xs w-full bg-white border border-gray-300 rounded-2xl shadow-lg transition-all transform hover:scale-105 hover:shadow-2xl hover:-translate-y-1 hover:bg-gray-50 duration-300 ease-out">
+                        <div class="card bg-white border-2 overflow-hidden rounded-t-2xl">
+                            <!-- Image with zoom effect -->
+                            <div class="overflow-hidden rounded-t-lg">
+                                <img src="{{ asset('upload/artikel/' . $artikel->gambar) }}"
+                                    class="img-fluid rounded-t-lg transform transition-transform duration-500 hover:scale-110">
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-indigo-600 font-medium mb-2 block">
+                                {{ \Carbon\Carbon::parse($artikel->tgl_published)->locale('id')->isoFormat('D MMMM, YYYY') }}
+                            </span>
+                            <h4 class="text-xl text-gray-900 font-semibold leading-6 mb-3">{{ $artikel->judul }}</h4>
+                            <p class="text-gray-600 leading-6 mb-4">{{ Str::limit($artikel->deskripsi, 100) }}</p>
+                            <a href="{{ route('Artikel.detail', $artikel->id) }}"
+                                class="text-lg text-indigo-600 font-semibold hover:underline">Read more</a>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-
+        </section>
         <!-- Card Start -->
 
-    </div>
-    <div class="bungkuscard mt-10">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
-            @foreach ($artikels as $artikel)
-            <div class="w-full">
-                <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                    <img class="rounded-t-lg w-full h-65 object-cover" src="{{ asset('upload/artikel/' . $artikel->gambar) }}" alt="Artikel Image" />
-                    <div class="p-5">
-                        <a href="#">
-                            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                {{ $artikel->judul }} <!-- Use dynamic title -->
-                            </h5>
-                        </a>
-                        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                            {{ $artikel->konten }} <!-- Use dynamic title -->
-                        </h5>
-                        <p>{{$artikel->tgl_published}}</p>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
     </div>
     <!-- Berita End -->
     <!-- Galeri -->
@@ -300,29 +292,15 @@
                 <iframe class="border rounded-lg" width="760" height="415" src="https://www.youtube.com/embed/0E4aRguHzDE" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
-    </section>
-    <!-- Contact Form -->
-    <section class="bg-white dark:bg-gray-900">
-        <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Us</h2>
-            <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Got a technical issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know.</p>
-            <form action="#" class="space-y-8">
-                <div>
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-                    <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@flowbite.com" required>
-                </div>
-                <div>
-                    <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Subject</label>
-                    <input type="text" id="subject" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Let us know how we can help you" required>
-                </div>
-                <div class="sm:col-span-2">
-                    <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
-                    <textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a comment..."></textarea>
-                </div>
-                <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send message</button>
-            </form>
+        <div class="flex justify-end">
+            <a href="https://info.flagcounter.com/sZOS">
+                <img src="https://s11.flagcounter.com/count2/sZOS/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+                <p>{{ $visitorCount }}</p>
         </div>
     </section>
+
+
+
     <!-- Additional Features -->
     </div>
     <section id="tentang-kami" class="container mx-auto px-6 py-12">
