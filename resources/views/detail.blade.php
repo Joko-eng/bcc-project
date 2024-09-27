@@ -31,7 +31,7 @@
                     <li>
                         <a href="/" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Beranda</a>
                     </li>
-                    
+
                     <li>
                         <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Kategori</a>
                     </li>
@@ -62,97 +62,97 @@
             </div>
         </div>
     </nav>
-    <div class="m-16 mx-20 max-w-screen-lg overflow-hidden rounded-xl border shadow-lg md:pl-8">
-        <div class="flex flex-col overflow-hidden bg-white sm:flex-row md:h-80">
-            <div class="order-first ml-auto h-full w-full bg-gray-700 sm:order-none sm:h-auto sm:w-1/2 lg:w-2/5">
-
-
-                <div id="controls-carousel" class="relative w-full" data-carousel="static">
-                    <!-- Carousel wrapper -->
-                    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                        <!-- Item 1 -->
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="{{ asset('upload/produk/' . $produk->image1) }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                        </div>
-                        <!-- Item 2 -->
-                        
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="{{ asset('upload/produk/' . $produk->image2) }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                        </div>
-                        
-                        <!-- Item 3 -->
-                        @if($produk->image3)
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="{{ asset('upload/produk/' . $produk->image3) }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                        </div>
-                        @endif
-                        <!-- Item 4 -->
-                        @if($produk->image4)
-                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="{{ asset('upload/produk/' . $produk->image4) }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                        </div>
-                        @endif
-                    </div>
-                    <!-- Slider controls -->
-                    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
-                            </svg>
-                            <span class="sr-only">Previous</span>
-                        </span>
-                    </button>
-                    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
-                            </svg>
-                            <span class="sr-only">Next</span>
-                        </span>
-                    </button>
-                </div>
-
-            </div>
-            <div class="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-3/5">
-                <div class="mb-4 rounded-full bg-blue-800 py-1 px-4 border border-transparent text-xs text-white transition-all shadow-sm w-24 text-center">
-                    {{$produk->kategoris->nama_kategori}}
-                </div>
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h5>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong> Bahan : </strong>{{ $produk->bahan }}</p>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong> Ukuran : </strong>{{ $produk->ukuran }}</p>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $produk->deskripsi}}</p>
-                <div class="px-4 pt-2 pb-3">
-                    <a href="#" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded">
-                        <a href="https://wa.me/6282131815153" target="_blank">Chat with us on WhatsApp</a>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <!-- Additional Features -->
+    <div class="flex flex-col min-h-screen">
+            <div class="flex-grow">
+                <div class="flex flex-col overflow-hidden bg-white sm:flex-row md:h-80">
+                    <div class="order-first ml-auto h-full w-full bg-gray-700 sm:order-none sm:h-auto sm:w-1/2 lg:w-2/5">
 
 
+                        <div id="controls-carousel" class="relative w-full" data-carousel="static">
+                            <!-- Carousel wrapper -->
+                            <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                                <!-- Item 1 -->
+                                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                    <img src="{{ asset('upload/produk/' . $produk->image1) }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                                </div>
+                                <!-- Item 2 -->
 
-    <footer class=" w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
-        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://flowbite.com/" class="hover:underline">Develope By Poliwangi</a>. All Rights Reserved.
-        </span>
-        <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-            <li>
-                <a href="#" class="hover:underline me-4 md:me-6">About</a>
-            </li>
-            <li>
-                <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
-            </li>
-            <li>
-                <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-            </li>
-            <li>
-                <a href="#" class="hover:underline">Contact</a>
-            </li>
-        </ul>
-    </footer>
+                                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                    <img src="{{ asset('upload/produk/' . $produk->image2) }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                                </div>
+
+                                <!-- Item 3 -->
+                                @if($produk->image3)
+                                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                    <img src="{{ asset('upload/produk/' . $produk->image3) }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                                </div>
+                                @endif
+                                <!-- Item 4 -->
+                                @if($produk->image4)
+                                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                    <img src="{{ asset('upload/produk/' . $produk->image4) }}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                                </div>
+                                @endif
+                            </div>
+                            <!-- Slider controls -->
+                            <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+                                    </svg>
+                                    <span class="sr-only">Previous</span>
+                                </span>
+                            </button>
+                            <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+                                    </svg>
+                                    <span class="sr-only">Next</span>
+                                </span>
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-3/5">
+                        <div class="mb-4 rounded-full bg-blue-800 py-1 px-4 border border-transparent text-xs text-white transition-all shadow-sm w-24 text-center">
+                            {{$produk->kategoris->nama_kategori}}
+                        </div>
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h5>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong> Bahan : </strong>{{ $produk->bahan }}</p>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><strong> Ukuran : </strong>{{ $produk->ukuran }}</p>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $produk->deskripsi}}</p>
+                        <div class="px-4 pt-2 pb-3">
+                            <a href="#" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded">
+                                <a href="https://wa.me/6282131815153" target="_blank">Chat with us on WhatsApp</a>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <footer class="w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://flowbite.com/" class="hover:underline">Develope By Poliwangi</a>. All Rights Reserved.</span>
+            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline">Contact</a>
+                </li>
+            </ul>
+        </footer>
+    </div>
+
+
 
 
 
@@ -168,6 +168,16 @@
             /* Internet Explorer 10+ */
             scrollbar-width: none;
             /* Firefox */
+        }
+
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .flex-grow {
+            flex-grow: 1;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>

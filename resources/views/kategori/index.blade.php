@@ -67,9 +67,9 @@
     <section class="bg-gray-50 py-8 antialiased dark:bg-gray-900 md:py-16">
     <form action="{{ route('index') }}" method="GET" class="mb-4">
                         <div class="flex items-center">
-                            <input type="text" name="search" placeholder="Search products..." value="{{ request()->query('search') }}" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
+                            <input type="text" name="search" placeholder="Cari Produk..." value="{{ request()->query('search') }}" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
                             <button type="submit" class="ml-2 inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                Search
+                                Cari
                             </button>
                         </div>
                     </form>
@@ -122,7 +122,7 @@
                     <a href="#">
                         <h2 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h2>
                     </a>
-                    <a href="/produk/{{ $produk->id }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-3 rounded text-sm">
+                    <a href="{{ route('produk.show', ['id' => Crypt::encryptString($produk->id)]) }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-3 rounded text-sm">
                         <i class="fa fa-shopping-cart"></i> Detail Produk
                     </a>
                 </div>

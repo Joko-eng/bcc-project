@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Crypt;
 
 use App\Models\Artikel;
 use App\Models\Produk;
@@ -21,34 +23,20 @@ use Illuminate\Http\Request;
     /**
      * Display a listing of the resource.
      */
-    public function countVisitor()
-    {
-        // Retrieve the current visitor count
-        $visitor = Visitor::first();
-
-        // If no visitor data exists, create a new record
-        if (!$visitor) {
-            $visitor = Visitor::create(['counts' => 1]);
-        } else {
-            // Increment the visitor count
-            $visitor->increment('counts');
-        }
-
-        // Return the updated count to be passed to the view
-        return $visitor->counts;
-    }
-
     public function index()
     {
-        // Get the visitor count
-        $visitorCount = $this->countVisitor(); 
+        $today = Carbon::today()->toDateString();
+
+        $visitors = Visitor::all();
+        $totalVisitCount = Visitor::where('date', $today)->sum('visit_count');
+        $total = Visitor ::count();
 
         // Retrieve produk and artikel data
         $produks = Produk::with('kategoris')->get();
         $artikels = Artikel::all();
 
         // Pass the visitor count, produk, and artikel data to the view
-        return view('welcome', compact('produks', 'artikels', 'visitorCount'));
+        return view('welcome', compact('produks', 'artikels', 'visitors', 'totalVisitCount', 'total'));
     }
 
 
@@ -68,8 +56,14 @@ use Illuminate\Http\Request;
     /**
      * Display the specified resource.
      */
-    public function show(Produk $produk, $id)
+    public function show($encryptedId)
     {
+        try {
+            $id = Crypt::decryptString($encryptedId);
+        } catch (DecryptException $e) {
+            abort(404, 'Invalid encrypted ID');
+        }
+
         $produk = Produk::findOrFail($id);
         $kategori = Kategori::all(); // Jika Anda perlu mengirim kategori ke view
         return view('detail', compact('produk', 'kategori'));

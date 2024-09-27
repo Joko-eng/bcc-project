@@ -15,26 +15,25 @@ class ProdukController extends Controller
      */
    
 
-    public function index(Request $request)
-    {
+     public function index(Request $request)
+     {
+         $search = $request->input('search');
+            // $produks = Produk::paginate(3);
+         $produks = Produk::with('kategoris')
+             ->when($search, function ($query, $search) {
+                 return $query->where('nama', 'like', "%{$search}%")
+                     ->orWhere('deskripsi', 'like', "%{$search}%")
+                     ->orWhereHas('kategoris', function ($query) use ($search) {
+                         $query->where('nama_kategori', 'like', "%{$search}%");
+                     });
+             })
+             ->paginate(3);
+     
+         return view('Produk.index', compact('produks'));
+     }
+     
 
-
-
-        $search = $request->input('search');
-
-        $produks = Produk::with('kategoris')
-            ->when($search, function ($query, $search) {
-                return $query->where('nama', 'like', "%{$search}%")
-                    ->orWhere('deskripsi', 'like', "%{$search}%")
-                    ->orWhereHas('kategoris', function ($query) use ($search) {
-                        $query->where('nama_kategori', 'like', "%{$search}%");
-                    });
-            })
-            ->get();
-            $produkCount = Produk::count();
-
-        return view('Produk.index', compact('produks', 'produkCount'));
-    }
+       
 
     /**
      * Show the form for creating a new resource.
@@ -145,7 +144,10 @@ class ProdukController extends Controller
             'bahan' => 'required',
             'deskripsi' => 'required|min:5|max:150',
             'kategori_id' => 'required|integer',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image3' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image4' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         $produk = Produk::findOrFail($id);
@@ -154,12 +156,40 @@ class ProdukController extends Controller
         $produk->deskripsi = $validatedData['deskripsi'];
         $produk->kategori_id = $validatedData['kategori_id'];
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('upload/produk'), $imageName);
-            $produk->image = $imageName;
-        }
+       // Proses penyimpanan gambar pertama
+       if ($request->hasFile('image1')) {
+        $image1 = $request->file('image1');
+        $imageName1 = time() . '_1.' . $image1->getClientOriginalExtension();
+        $image1->move(public_path('upload/produk'), $imageName1);
+        $produk->image1 = $imageName1;
+    }
+
+    // Proses penyimpanan gambar kedua
+    if ($request->hasFile('image2')) {
+        $image2 = $request->file('image2');
+        $imageName2 = time() . '_2.' . $image2->getClientOriginalExtension();
+        $image2->move(public_path('upload/produk'), $imageName2);
+        $produk->image2 = $imageName2;
+    }
+    if ($request->hasFile('image3')) {
+        $image3 = $request->file('image3');
+        $imageName3 = time() . '_3.' . $image3->getClientOriginalExtension();
+        $image3->move(public_path('upload/produk'), $imageName3);
+        $produk->image3 = $imageName3;
+        Log::info('Image 3 uploaded successfully: ' . $imageName3);
+    } else {
+        Log::info('Image 3 not uploaded');
+    }
+
+    if ($request->hasFile('image4')) {
+        $image4 = $request->file('image4');
+        $imageName4 = time() . '_4.' . $image4->getClientOriginalExtension();
+        $image4->move(public_path('upload/produk'), $imageName4);
+        $produk->image4 = $imageName4;
+        Log::info('Image 4 uploaded successfully: ' . $imageName4);
+    } else {
+        Log::info('Image 4 not uploaded');
+    }
 
         $produk->save();
 

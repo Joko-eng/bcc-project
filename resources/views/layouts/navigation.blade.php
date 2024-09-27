@@ -91,7 +91,7 @@
     .sticky-nav {
         position: sticky;
         top: 0;
-        background-color: #8B4513; /* Warna coklat */
+        background-color: white; /* Warna coklat */
         z-index: 1000; /* Supaya berada di depan konten lain */
     }
 

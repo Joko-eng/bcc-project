@@ -114,7 +114,7 @@
                 <a href="#">
                     <h2 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h2>
                 </a>
-                <a href="/produk/{{ $produk->id }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-3 rounded text-sm">
+                <a href="{{ route('produk.show', ['id' => Crypt::encryptString($produk->id)]) }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-3 rounded text-sm">
                     <i class="fa fa-shopping-cart"></i> Detail Produk
                 </a>
             </div>

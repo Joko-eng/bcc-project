@@ -105,7 +105,7 @@
                         <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h2>
                     </a>
                     <br>
-                    <a href="/produk/{{ $produk->id }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">
+                    <a href="{{ route('produk.show', ['id' => Crypt::encryptString($produk->id)]) }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">
                         <i class="fa fa-shopping-cart"></i> Detail Produk
                     </a>
                 </div>
@@ -293,10 +293,27 @@
             </div>
         </div>
         <div class="flex justify-end">
-            <a href="https://info.flagcounter.com/sZOS">
-                <img src="https://s11.flagcounter.com/count2/sZOS/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
-                <p>{{ $visitorCount }}</p>
+
+            <div class="bg-white p-4 rounded-lg shadow-md max-w-xs w-40">
+                <h2 class="text-lg font-semibold mb-2">Pengunjung</h2>
+                <div class="flex items-center mb-2">
+                    <img src="https://www.countryflags.com/wp-content/uploads/indonesia-flag-png-large.png" alt="Indonesia Flag" class="w-6 h-4 mr-2">
+                    <span>ID</span>
+                    <span class="ml-2 font-semibold"></span>
+                </div>
+                <div class="mb-2">
+                    <span>Hari ini : {{ $totalVisitCount }}</span>
+                    <span class="font-semibold"></span>
+                    
+                </div>
+                <div class="mb-2">
+                <span> Total : {{ $total }}</span>
+                <span class="font-semibold"></span>
+                </div>
+    
+            </div>
         </div>
+
     </section>
 
 

@@ -18,6 +18,7 @@
     },
     "dependencies": {
         "aos": "^2.3.4",
+        "flowbite-typography": "^1.0.4",
         "pagedone": "^1.2.2",
         "sweetalert2": "^11.6.13",
         "swiper": "^11.1.14",

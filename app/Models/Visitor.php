@@ -7,8 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Visitor extends Model
 {
-    use HasFactory;
-    protected $table = 'tbl_visitor';
-    protected $fillable = ['counts'];
-
+    protected $fillable = ['date', 'visit_count', 'ip_address', 'user_agent'];
 }

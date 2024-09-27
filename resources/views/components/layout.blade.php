@@ -14,7 +14,7 @@
         <x-sidebar></x-sidebar>
 
         {{-- Main --}}
-        <main class="p-4 md:ml-64 h-auto pt-20">
+        <main class="p-4 md:ml-64 min-h-screen pt-2">
             {{ $slot }}
         </main>
     </div>
