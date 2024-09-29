@@ -203,6 +203,6 @@ class ProdukController extends Controller
     {
         $product = Produk::findOrFail($id);
         $product->delete();
-        return redirect('/produk')->with(['success' => 'Produk Berhasil Dihapus']);
+        return redirect('admin/produk')->with(['success' => 'Produk Berhasil Dihapus']);
     }
 }

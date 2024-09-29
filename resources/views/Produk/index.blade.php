@@ -24,7 +24,6 @@
             </button>
         </div>
         @endif
-        <h3 class="text-3xl font-bold dark:text-white px-4 lg:px-12">Produk</h3>
         <nav class="flex" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <li>
@@ -37,6 +36,9 @@
                 </li>
             </ol>
         </nav>
+        <div class="flex justify-between items-center mb-4">
+            <h1 class="py-2 text-xl font-bold text-gray-900 dark:text-white">Daftar Produk</h1>
+        </div>
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg">
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 p-4">
 

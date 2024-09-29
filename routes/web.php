@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Crypt;
 
@@ -7,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\viewkategController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\dashboardController;
 use App\Models\Produk;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +22,12 @@ Route::get('/produk/{id}', [HomeController::class, 'show'])->name('produk.show')
 
 //kategori
 Route::get('/kategori', [viewkategController::class, 'index'])->name('index');
+// web.php (Routes file)
+Route::get('/kategori/{id}', [viewkategController::class, 'showByCategory'])->name('kategori.show');
+
+
+
+
 Route::get('/kategori/kalung', [viewkategController::class, 'kalung']);
 Route::get('/kategori/dompet', [viewkategController::class, 'dompet']);
 Route::get('/kategori/anting-anting', [viewkategController::class, 'antingAnting']);
@@ -60,10 +68,15 @@ Route::middleware('auth')->group(function () {
 
     Route::get('admin/produk', [ProdukController::class, 'index'])->name('produk.index');
     Route::get('admin/tambahProduk', [ProdukController::class, 'create'])->name('produk.create');
+
     Route::post('admin/produk', [ProdukController::class, 'store'])->name('produk.store');
     Route::get('admin/produk/{id}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
     Route::put('admin/produk/{id}', [ProdukController::class, 'update'])->name('produk.update');
     Route::delete('admin/produk/{id}', [ProdukController::class, 'destroy'])->name('produk.destroy');
+
+    Route::get('admin/kategori', [KategoriController::class, 'index'])->name('kategori.index');
+    Route::post('admin/kategori', [KategoriController::class, 'store'])->name('kategori.store');
+    Route::delete('admin/kategori/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
 
     // Artikel
     Route::get('/artikel', [ArtikelController::class, 'index'])->name('Artikel.index');

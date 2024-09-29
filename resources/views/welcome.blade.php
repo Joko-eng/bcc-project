@@ -35,6 +35,7 @@
                     <li>
                         <a href="/kategori" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Kategori</a>
                     </li>
+
                     <li>
                         <a href="" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Artikel</a>
                     </li>
@@ -91,28 +92,41 @@
                 <!-- Kategori cards will be loaded here -->
             </div>
         </section>
-        <div class="flex overflow-x-auto space-x-4 -mx-2">
-            @foreach ($produks as $produk)
-            <div class="max-w-sm flex-shrink-0 w-30 sm:w-48 md:w-50 lg:w-70 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transition-all transform hover:scale-105 hover:shadow-2xl hover:-translate-y-1 hover:bg-gray-50 duration-300 ease-out">
-                <a href="#">
-                    <img class="rounded-t-lg w-full h-48 object-cover" src="{{ asset('upload/produk/' . $produk->image1) }}" alt="" />
-                </a>
-                <div class="p-5">
-                    <div class="mb-4 rounded-full bg-blue-800 py-0.5 px-5 border border-transparent text-xs text-white transition-all shadow-sm w-24 text-start">
-                        {{$produk->kategoris->nama_kategori}}
-                    </div>
-                    <a href="#">
-                        <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h2>
-                    </a>
-                    <br>
-                    <a href="{{ route('produk.show', ['id' => Crypt::encryptString($produk->id)]) }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">
+        <div class="container mx-auto px-6 py-12" id="produk">
+            <!-- Our Categories -->
+            <section class="container mx-auto px-6 py-3">
+                <h2 class="text-3xl font-bold mb-2 text-center">@lang('message.catalog')</h2>
+                <div id="categories">
+                    <!-- Kategori cards will be loaded here -->
+                </div>
+            </section>
+            <div class="flex overflow-x-auto space-x-4 -mx-2 overflow-hidden no-scrollbar">
+                @foreach ($produks as $produk)
+                    <div
+                        class="max-w-xs flex-shrink-0 w-41 sm:w-48 md:w-44 lg:w-[250px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        <a href="#">
+                            <img class="rounded-t-lg w-full h-36 object-cover"
+                                src="{{ asset('upload/produk/' . $produk->image1) }}" alt="{{ $produk->nama }}" />
+                        </a>
+                        <div class="p-3">
+                            <div
+                                class="mb-4 rounded-full w-auto bg-blue-800 py-0.5 px-2 border border-transparent text-xs text-white transition-all shadow-sm text-center">
+                                {{ $produk->kategori_translated ?? $produk->kategoris->nama_kategori }}
+                            </div>
+                            <a href="#">
+                                <h2 class="mb-2 text-base font-bold tracking-tight text-gray-900 dark:text-white">
+                                    {{ $produk->nama_translated ?? $produk->nama }}</h2>
+                            </a>
+                            <br>
+                            <a href="{{ route('produk.show', ['id' => Crypt::encryptString($produk->id)]) }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">
                         <i class="fa fa-shopping-cart"></i> Detail Produk
                     </a>
-                </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-            @endforeach
-        </div>
 
+        </div>
     </div>
 
 
@@ -121,6 +135,33 @@
             Lihat Semua
         </button>
     </div>
+
+    <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
+  <div class="relative p-2.5 h-96 overflow-hidden rounded-xl bg-clip-border">
+    <img
+      src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=927&amp;q=80"
+      alt="card-image"
+      class="h-full w-full object-cover rounded-md"
+    />
+  </div>
+  <div class="p-4">
+    <div class="mb-2 flex items-center justify-between">
+      <p class="text-slate-800 text-xl font-semibold">
+        Apple AirPods
+      </p>
+      <p class="text-cyan-600 text-xl font-semibold">
+        $95.00
+      </p>
+    </div>
+    <p class="text-slate-600 leading-normal font-light">
+      With plenty of talk and listen time, voice-activated Siri access, and
+      an available wireless charging case.
+    </p>
+    <button class="rounded-md w-full mt-6 bg-cyan-600 py-2 px-4 border border-0 text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-cyan-700 focus:shadow-none active:bg-cyan-700 hover:bg-cyan-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
+      Add to Cart
+    </button>
+  </div>
+</div>
 
     <script>
         function scrollRight() {
@@ -304,13 +345,13 @@
                 <div class="mb-2">
                     <span>Hari ini : {{ $totalVisitCount }}</span>
                     <span class="font-semibold"></span>
-                    
+
                 </div>
                 <div class="mb-2">
-                <span> Total : {{ $total }}</span>
-                <span class="font-semibold"></span>
+                    <span> Total : {{ $total }}</span>
+                    <span class="font-semibold"></span>
                 </div>
-    
+
             </div>
         </div>
 

@@ -28,5 +28,6 @@ export default {
         // require('daisyui'), // Uncomment jika perlu daisyUI
         require('flowbite-typography'),
         require('flowbite/plugin'),
+       // require('daisyui'),
     ],
 };

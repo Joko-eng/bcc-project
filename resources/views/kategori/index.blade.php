@@ -32,9 +32,6 @@
                         <a href="/" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Beranda</a>
                     </li>
                     <li>
-                        <a href="#produk" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Produk</a>
-                    </li>
-                    <li>
                         <a href="/kategori" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Kategori</a>
                     </li>
                     <li>
@@ -64,72 +61,50 @@
             </div>
         </div>
     </nav>
-    <section class="bg-gray-50 py-8 antialiased dark:bg-gray-900 md:py-16">
-    <form action="{{ route('index') }}" method="GET" class="mb-4">
-                        <div class="flex items-center">
-                            <input type="text" name="search" placeholder="Cari Produk..." value="{{ request()->query('search') }}" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
-                            <button type="submit" class="ml-2 inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                Cari
-                            </button>
-                        </div>
-                    </form>
-
-        <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            <a href="/kategori/kalung" class="flex items-center rounded-lg border border-gray-200 bg-white px-4 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <img class="me-2 h-5 w-5 shrink-0" src="images/d.jpg" alt="Kalung" />
-                <span class="text-sm font-medium text-gray-900 dark:text-white">Kalung </span>
-            </a>
-            <a href="/kategori/dompet" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <img class="me-2 h-5 w-5 shrink-0" src="images/dompet.jpg" alt="Dompet" />
-                <span class="text-sm font-medium text-gray-900 dark:text-white">Dompet </span>
-            </a>
-            <a href="/kategori/anting-anting" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <img class="me-2 h-5 w-5 shrink-0" src="images/an.jpg" alt="Anting-Anting" />
-                <span class="text-sm font-medium text-gray-900 dark:text-white">Anting-Anting </span>
-            </a>
-            <a href="/kategori/gelang" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <img class="me-2 h-5 w-5 shrink-0" src="images/gelang.jpg" alt="Gelang" />
-                <span class="text-sm font-medium text-gray-900 dark:text-white">Gelang </span>
-            </a>
-            <a href="/kategori/home-deco" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <img class="me-2 h-5 w-5 shrink-0" src="images/hd.jpg" alt="Home Decor" />
-                <span class="text-sm font-medium text-gray-900 dark:text-white">Home Decor</span>
-            </a>
-            <a href="/kategori/ikat-pinggang" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <img class="me-2 h-5 w-5 shrink-0" src="images/ikat.jpg" alt="Ikat Pinggang" />
-                <span class="text-sm font-medium text-gray-900 dark:text-white">Ikat Pinggang </span>
-            </a>
-            <a href="/kategori/bros-ring" class="flex items-center rounded-lg border border-gray-200 bg-white px-5 py-2 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                <img class="me-2 h-5 w-5 shrink-0" src="images/br.jpg" alt="Bros Ring" />
-                <span class="text-sm font-medium text-gray-900 dark:text-white">Bros Ring </span>
-            </a>
+    <section class="bg-gray-50 py-5 antialiased dark:bg-gray-900 md:py-16">
+    <form action="{{ route('index') }}" method="GET" class="mb-2 max-w-md mx-auto">
+        <div class="flex items-center">
+            <input type="text" name="search" placeholder="Cari Produk..." value="{{ request()->query('search') }}" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
+            <button type="submit" class="ml-2 inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                Cari
+            </button>
         </div>
+    </form>
+</section>
 
-    </section>
-
-
-    <div class="container mx-auto px-4 py-12" id="produk">
-        <!-- Our Categories -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            @foreach ($produks as $produk)
-            <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <img class="rounded-t-lg w-full h-40 object-cover" src="{{ asset('upload/produk/' . $produk->image1) }}" alt="" />
-
+<div class="container mx-auto p-4">
+    <div class="grid grid-cols-9 gap-4">
+        @foreach ($kategoris as $kategori)
+            <a href="{{ route('kategori.show', ['id' => $kategori->id]) }}" class="border border-gray-300 rounded-lg p-2 hover:shadow-md transition-shadow duration-300 ease-in-out">
+                <h3 class="text-base font-medium text-gray-900 dark:text-white text-center">{{ $kategori->nama_kategori }}</h3>
+            </a>
+        @endforeach
+    </div>
+</div>
+<div class="container mx-auto p-4">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        @foreach ($produks as $produk)
+            <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transition-all transform hover:scale-105 hover:shadow-2xl hover:-translate-y-1 hover:bg-gray-50 duration-300 ease-out">
+                <a href="#">
+                    <img class="rounded-t-lg w-full h-32 object-cover" src="{{ asset('upload/produk/' . $produk->image1) }}" alt="" />
+                </a>
                 <div class="p-3">
-                    <div class="mb-3 inline-block rounded-md bg-blue-800 py-1 px-4 text-xs text-white w-auto">
-                        {{ $produk->kategoris->nama_kategori }}
+                    <div class="mb-2 rounded-full bg-blue-800 py-0.5 px-3 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-start">
+                        {{$produk->kategoris->nama_kategori}}
                     </div>
                     <a href="#">
-                        <h2 class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h2>
+                        <h2 class="mb-1 text-lg font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h2>
                     </a>
-                    <a href="{{ route('produk.show', ['id' => Crypt::encryptString($produk->id)]) }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-3 rounded text-sm">
-                        <i class="fa fa-shopping-cart"></i> Detail Produk
+                    <br>
+                    <a href="{{ route('produk.show', ['id' => Crypt::encryptString($produk->id)]) }}" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-1 px-2 rounded">
+                        <i class="fa fa-shopping-cart"></i> Detail
                     </a>
                 </div>
             </div>
-            @endforeach
-        </div>
+        @endforeach
     </div>
+</div>
+
 
     <style>
         #produk .grid {
