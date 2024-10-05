@@ -26,22 +26,13 @@ Route::get('/kategori', [viewkategController::class, 'index'])->name('index');
 Route::get('/kategori/{id}', [viewkategController::class, 'showByCategory'])->name('kategori.show');
 
 
-
-
-Route::get('/kategori/kalung', [viewkategController::class, 'kalung']);
-Route::get('/kategori/dompet', [viewkategController::class, 'dompet']);
-Route::get('/kategori/anting-anting', [viewkategController::class, 'antingAnting']);
-Route::get('/kategori/gelang', [viewkategController::class, 'gelang']);
-Route::get('/kategori/home-decor', [viewkategController::class, 'homeDecor']);
-Route::get('/kategori/ikat-pinggang', [viewkategController::class, 'ikatPinggang']);
-Route::get('/kategori/bros-ring', [viewkategController::class, 'brosRing']);
-
 Route::get('/detailArtikel/{id}', [HomeController::class, 'show1'])->name('Artikel.detail');
 
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'carts']);
 
 // Route::get('/dashboard', [dashboardController::class, 'index'])
 //     ->middleware(['auth', 'verified'])

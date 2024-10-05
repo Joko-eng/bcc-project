@@ -62,36 +62,38 @@
         </div>
     </nav>
     <section class="bg-gray-50 py-5 antialiased dark:bg-gray-900 md:py-16">
-    <form action="{{ route('index') }}" method="GET" class="mb-2 max-w-md mx-auto">
-        <div class="flex items-center">
-            <input type="text" name="search" placeholder="Cari Produk..." value="{{ request()->query('search') }}" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
-            <button type="submit" class="ml-2 inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                Cari
-            </button>
+        <form action="{{ route('index') }}" method="GET" class="mb-2 max-w-md mx-auto">
+            <div class="flex items-center">
+                <input type="text" name="search" placeholder="Cari Produk..." value="{{ request()->query('search') }}" class="border border-gray-300 rounded-lg py-2 px-4 w-full">
+                <button type="submit" class="ml-2 inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    Cari
+                </button>
+            </div>
+        </form>
+    </section>
+    <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-center">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+                @foreach ($kategoris as $kategori)
+                <a href="{{ route('kategori.show', ['id' => $kategori->id]) }}" class="border border-gray-300 rounded-lg p-2 hover:shadow-md transition-shadow duration-300 ease-in-out flex items-center justify-center">
+                    <h3 class="text-sm font-medium text-gray-900 dark:text-white text-center">{{ $kategori->nama_kategori }}</h3>
+                </a>
+                @endforeach
+            </div>
         </div>
-    </form>
-</section>
-
-<div class="container mx-auto p-4">
-    <div class="grid grid-cols-9 gap-4">
-        @foreach ($kategoris as $kategori)
-            <a href="{{ route('kategori.show', ['id' => $kategori->id]) }}" class="border border-gray-300 rounded-lg p-2 hover:shadow-md transition-shadow duration-300 ease-in-out">
-                <h3 class="text-base font-medium text-gray-900 dark:text-white text-center">{{ $kategori->nama_kategori }}</h3>
-            </a>
-        @endforeach
     </div>
-</div>
-<div class="container mx-auto p-4">
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        @foreach ($produks as $produk)
+    <div class="container mx-auto p-4">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            @foreach ($produks as $produk)
             <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transition-all transform hover:scale-105 hover:shadow-2xl hover:-translate-y-1 hover:bg-gray-50 duration-300 ease-out">
                 <a href="#">
                     <img class="rounded-t-lg w-full h-32 object-cover" src="{{ asset('upload/produk/' . $produk->image1) }}" alt="" />
                 </a>
                 <div class="p-3">
-                    <div class="mb-2 rounded-full bg-blue-800 py-0.5 px-3 border border-transparent text-xs text-white transition-all shadow-sm w-20 text-start">
-                        {{$produk->kategoris->nama_kategori}}
-                    </div>
+                <div
+                                class="mb-4 rounded-full w-auto bg-blue-800 py-0.5 px-2 border border-transparent text-xs text-white transition-all shadow-sm text-center">
+                                {{ $produk->kategori_translated ?? $produk->kategoris->nama_kategori }}
+                            </div>
                     <a href="#">
                         <h2 class="mb-1 text-lg font-bold tracking-tight text-gray-900 dark:text-white">{{ $produk->nama }}</h2>
                     </a>
@@ -101,12 +103,19 @@
                     </a>
                 </div>
             </div>
-        @endforeach
+            @endforeach
+        </div>
     </div>
-</div>
 
 
     <style>
+        .centered-grid {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 1rem;
+            justify-content: center;
+        }
+
         #produk .grid {
             display: grid;
             /* Create a responsive grid layout */

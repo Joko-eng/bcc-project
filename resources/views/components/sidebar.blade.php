@@ -14,8 +14,6 @@
                     <span class="flex-1 ml-3 text-left whitespace-nowrap">Dashboard</span>
                 </a>
             </li>
-            <li>
-
             </li>
             <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                 <svg class="w-[31px] h-[31px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
@@ -29,12 +27,14 @@
             </button>
             <ul id="dropdown-example" class="hidden py-2 space-y-2">
                 <li>
+                    <a href="{{url('admin/produk')}}" class="flex items-center w-full p-2 text-base font-medium {{ request()->is('admin/produk') ? 'bg-amber-500 text-white hover:bg-amber-500 hover:text-white' : 'text-gray-900 hover:bg-gray-100'}} rounded-lg pl-11 group dark:text-white dark:hover:bg-gray-700">
+                        Produk
+                    </a>
                 </li>
                 <li>
-                    <a href="{{url('admin/produk')}}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Produk</a>
-                </li>
-                <li>
-                    <a href="{{url('admin/kategori')}}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Kategori</a>
+                    <a href="{{url('admin/kategori')}}" class="flex items-center w-full p-2 text-base font-medium {{ request()->is('admin/kategori') ? 'bg-amber-500 text-white hover:bg-amber-500 hover:text-white' : 'text-gray-900 hover:bg-gray-100'}} rounded-lg pl-11 group dark:text-white dark:hover:bg-gray-700">
+                        Kategori
+                    </a>
                 </li>
             </ul>
             <li>
@@ -46,7 +46,8 @@
                     <span class="flex-1 ml-3 text-left whitespace-nowrap">Artikel</span>
                 </a>
             </li>
-            <li>
+
+            
                 <button
                     type="button"
                     class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ request()->is('room*') ? 'active-sidebar-item' : '' }}"
