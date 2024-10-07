@@ -30,13 +30,14 @@ class DashboardController extends Controller
         $visitors = Visitor::all();
         $totalVisitCount = Visitor::where('date', $today)->sum('visit_count');
         $total = Visitor ::count();
-        $categories = Kategori::pluck('nama_kategori')->toArray();
-
+        $categ = Kategori::pluck('nama_kategori')->toArray();
+        $categories = Kategori::withCount('produks')->get();
+        //dd($categories);
+       
+        
         
 
-
-
-        return view('dashboard', compact('title', 'user', 'produkCount','totalVisitCount','total', 'categories'));
+        return view('dashboard', compact('title', 'user', 'produkCount','totalVisitCount','total', 'categ', 'categories'));
     }
 
     // public function carts()
@@ -49,5 +50,13 @@ class DashboardController extends Controller
 
     //     return view('dashboard', compact('categoryNames', 'productCounts'));
     // }
+    public function categories()
+{
+    // Ambil data kategori dari database
+    $categories = Kategori::pluck('nama_kategori')->toArray();
+    
+    // Kembalikan data dalam format JSON
+    return response()->json($categories);
+}
     
 }

@@ -32,11 +32,9 @@ Route::get('/detailArtikel/{id}', [HomeController::class, 'show1'])->name('Artik
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
-Route::get('/dashboard', [DashboardController::class, 'carts']);
 
-// Route::get('/dashboard', [dashboardController::class, 'index'])
-//     ->middleware(['auth', 'verified'])
-//     ->name('dashboard');
+    Route::get('/api/categories', );
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
